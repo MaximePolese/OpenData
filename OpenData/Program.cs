@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using Newtonsoft.Json;
+using OpenData.Properties;
 
 namespace OpenData
 {
@@ -13,7 +16,7 @@ namespace OpenData
             // coordonnées GPS le Totem : 45.18486504179179, 5.731181509376984
             WebRequest request =
                 WebRequest.Create(
-                    "http://data.mobilites-m.fr/api/linesNear/json?x=5.731181509376984&y=45.18486504179179&dist=0&details=false");
+                    "http://data.mobilites-m.fr/api/linesNear/json?x=5.731181509376984&y=45.18486504179179&dist=0&details=true");
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             Console.WriteLine(response.StatusDescription);
             Stream dataStream = response.GetResponseStream();
@@ -23,6 +26,9 @@ namespace OpenData
             reader.Close();
             dataStream.Close();
             response.Close();
+
+            List <Ligne> lineReturn = JsonConvert.DeserializeObject<List <Ligne>>(responseFromServer);
+            Console.WriteLine(lineReturn[0]);
         }
     }
 }
