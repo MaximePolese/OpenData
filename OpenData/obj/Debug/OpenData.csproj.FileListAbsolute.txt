@@ -1,0 +1,6 @@
+C:\Users\maxime.polese\RiderProjects\OpenData\OpenData\bin\Debug\OpenData.exe
+C:\Users\maxime.polese\RiderProjects\OpenData\OpenData\bin\Debug\OpenData.pdb
+C:\Users\maxime.polese\RiderProjects\OpenData\OpenData\obj\Debug\OpenData.csproj.AssemblyReference.cache
+C:\Users\maxime.polese\RiderProjects\OpenData\OpenData\obj\Debug\OpenData.csproj.CoreCompileInputs.cache
+C:\Users\maxime.polese\RiderProjects\OpenData\OpenData\obj\Debug\OpenData.exe
+C:\Users\maxime.polese\RiderProjects\OpenData\OpenData\obj\Debug\OpenData.pdb
