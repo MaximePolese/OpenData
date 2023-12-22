@@ -43,6 +43,9 @@
         <Reference Include="System.Xml"/>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="FakeRequest.cs" />
+        <Compile Include="IRequest.cs" />
+        <Compile Include="Request.cs" />
         <Compile Include="Ligne.cs" />
         <Compile Include="Program.cs"/>
         <Compile Include="Properties\AssemblyInfo.cs"/>
