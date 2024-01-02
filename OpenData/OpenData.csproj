@@ -43,6 +43,7 @@
         <Reference Include="System.Xml"/>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="FormatData.cs" />
         <Compile Include="IRequest.cs" />
         <Compile Include="Request.cs" />
         <Compile Include="Ligne.cs" />

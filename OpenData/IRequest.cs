@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace OpenData
+﻿namespace OpenData
 {
     public interface IRequest
     {
-        List<Ligne> GetData();
+        string GetData();
     }
 }
