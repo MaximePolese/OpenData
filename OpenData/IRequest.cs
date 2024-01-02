@@ -1,9 +1,9 @@
-﻿namespace OpenData
+﻿using System.Collections.Generic;
+
+namespace OpenData
 {
     public interface IRequest
     {
-        void Connection();
-
-        void CloseConnection();
+        List<Ligne> GetData();
     }
 }

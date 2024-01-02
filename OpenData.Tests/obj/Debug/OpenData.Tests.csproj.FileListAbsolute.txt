@@ -1,0 +1,2 @@
+C:\Users\maxime.polese\RiderProjects\OpenData\OpenData.Tests\obj\Debug\OpenData.Tests.csproj.AssemblyReference.cache
+C:\Users\maxime.polese\RiderProjects\OpenData\OpenData.Tests\obj\Debug\OpenData.Tests.csproj.CoreCompileInputs.cache

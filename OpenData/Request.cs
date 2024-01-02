@@ -1,56 +1,47 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Net;
+using Newtonsoft.Json;
 
 namespace OpenData
 {
     public class Request : IRequest
     {
-        private WebRequest _newRequest;
-        private HttpWebResponse _response;
-        private Stream _dataStream;
-        private StreamReader _reader;
-        private string _responseFromServer;
+        private readonly double _lon;
 
-        public void Connection()
+        private readonly double _lat;
+
+        private readonly double _dist;
+
+        private List<Ligne> _lineList;
+
+        public Request(double lon, double lat, double dist)
         {
-            _newRequest = newRequest;
-            _response = Response;
-            _dataStream = DataStream;
-            _reader = Reader;
+            _lon = lon;
+            _lat = lat;
+            _dist = dist;
+            _lineList = new List<Ligne>();
         }
 
-        public void CloseConnection()
+        public List<Ligne> GetData()
         {
-            _reader.Close();
-            _dataStream.Close();
-            _response.Close();
-        }
-
-        public WebRequest newRequest
-        {
-            get => WebRequest.Create(
-                "http://data.mobilites-m.fr/api/linesNear/json?x=5.731181509376984&y=45.18486504179179&dist=0&details=true");
-        }
-
-        public HttpWebResponse Response
-        {
-            get => (HttpWebResponse)_newRequest.GetResponse();
-        }
-
-        public Stream DataStream
-        {
-            get => _response.GetResponseStream();
-        }
-
-        public StreamReader Reader
-        {
-            get => new StreamReader(_dataStream);
-        }
-
-        public string ResponseFromServer
-        {
-            get => _reader.ReadToEnd();
+            string api = string.Format(CultureInfo.InvariantCulture,
+                "http://data.mobilites-m.fr/api/linesNear/json?x={0}&y={1}&dist={2}&details=true", _lon, _lat, _dist);
+            // Console.WriteLine(api);
+            WebRequest request = WebRequest.Create(api);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            // Console.WriteLine(response.StatusDescription);
+            Stream dataStream = response.GetResponseStream();
+            StreamReader reader = new StreamReader(dataStream);
+            string responseFromServer = reader.ReadToEnd();
+            Console.WriteLine(responseFromServer);
+            reader.Close();
+            dataStream.Close();
+            response.Close();
+            _lineList = JsonConvert.DeserializeObject<List<Ligne>>(responseFromServer);
+            return _lineList;
         }
     }
 }
