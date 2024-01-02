@@ -8,8 +8,8 @@ namespace ClassLibrary1
         private List<Ligne> _lineList;
         private readonly IRequest _newRequest;
 
-        public FormatData()
-            : this(new Request(5.731181509376984, 45.18486504179179, 0))
+        public FormatData(double lon, double lat, double dist)
+            : this(new Request(lon, lat, dist))
         {
         }
 

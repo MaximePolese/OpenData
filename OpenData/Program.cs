@@ -11,8 +11,11 @@ namespace OpenData
             ServicePointManager.SecurityProtocol =
                 SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 
-            FormatData newRequest = new FormatData();
-            
+            double lon = 5.731181509376984;
+            double lat = 45.18486504179179;
+            double dist = 0;
+            FormatData newRequest = new FormatData(lon, lat, dist);
+
             foreach (var line in newRequest.DeserializeData())
             {
                 Console.WriteLine(line.ToString());
