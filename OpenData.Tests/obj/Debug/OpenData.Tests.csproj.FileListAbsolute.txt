@@ -37,3 +37,5 @@ C:\Users\maxime.polese\RiderProjects\OpenData\OpenData.Tests\bin\Debug\zh-Hant\M
 C:\Users\maxime.polese\RiderProjects\OpenData\OpenData.Tests\obj\Debug\OpenData.Tests.csproj.CopyComplete
 C:\Users\maxime.polese\RiderProjects\OpenData\OpenData.Tests\obj\Debug\OpenData.Tests.dll
 C:\Users\maxime.polese\RiderProjects\OpenData\OpenData.Tests\obj\Debug\OpenData.Tests.pdb
+C:\Users\maxime.polese\RiderProjects\OpenData\OpenData.Tests\bin\Debug\ClassLibrary1.dll
+C:\Users\maxime.polese\RiderProjects\OpenData\OpenData.Tests\bin\Debug\ClassLibrary1.pdb
