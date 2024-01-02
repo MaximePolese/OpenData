@@ -21,11 +21,14 @@ namespace OpenData.Tests
             expected.Add(new Ligne("test", "test", 5.73233, 45.18502, "test", new string[] { "test1", "test2" }));
 
             Assert.AreEqual(expected.Count, result.Count);
-
-            // foreach (var line in result)
-            // {
-            //     Assert.AreEqual(expected, line);
-            // }
+            
+            for (int i = 0; i < expected.Count; i++)
+            {
+                Assert.AreEqual(expected[i].id, result[i].id);
+                Assert.AreEqual(expected[i].name, result[i].name);
+                Assert.AreEqual(expected[i].lon, result[i].lon);
+                Assert.AreEqual(expected[i].lat, result[i].lat);
+            }
         }
     }
 }
