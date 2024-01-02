@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace OpenData
+namespace ClassLibrary1
 {
     public class Ligne
     {

@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenData", "OpenData\OpenDa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenData.Tests", "OpenData.Tests\OpenData.Tests.csproj", "{FFEE20FE-5845-4DAD-BA13-21E779E86321}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{9B7C86D9-7B7F-47F8-A060-330C56C73DF2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{FFEE20FE-5845-4DAD-BA13-21E779E86321}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFEE20FE-5845-4DAD-BA13-21E779E86321}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFEE20FE-5845-4DAD-BA13-21E779E86321}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B7C86D9-7B7F-47F8-A060-330C56C73DF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B7C86D9-7B7F-47F8-A060-330C56C73DF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B7C86D9-7B7F-47F8-A060-330C56C73DF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B7C86D9-7B7F-47F8-A060-330C56C73DF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

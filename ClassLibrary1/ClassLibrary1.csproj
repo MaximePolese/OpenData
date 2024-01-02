@@ -5,14 +5,13 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{7CD2D36D-842A-47F0-A5A2-47BA20B53A86}</ProjectGuid>
-        <OutputType>Exe</OutputType>
+        <ProjectGuid>{9B7C86D9-7B7F-47F8-A060-330C56C73DF2}</ProjectGuid>
+        <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>OpenData</RootNamespace>
-        <AssemblyName>OpenData</AssemblyName>
+        <RootNamespace>ClassLibrary1</RootNamespace>
+        <AssemblyName>ClassLibrary1</AssemblyName>
         <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
-        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -43,17 +42,14 @@
         <Reference Include="System.Xml"/>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Program.cs"/>
+        <Compile Include="FormatData.cs" />
+        <Compile Include="IRequest.cs" />
+        <Compile Include="Ligne.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
+        <Compile Include="Request.cs" />
     </ItemGroup>
     <ItemGroup>
       <None Include="packages.config" />
-    </ItemGroup>
-    <ItemGroup>
-      <ProjectReference Include="..\ClassLibrary1\ClassLibrary1.csproj">
-        <Project>{9b7c86d9-7b7f-47f8-a060-330c56c73df2}</Project>
-        <Name>ClassLibrary1</Name>
-      </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

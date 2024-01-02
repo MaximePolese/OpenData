@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace OpenData
+namespace ClassLibrary1
 {
     public class FormatData
     {

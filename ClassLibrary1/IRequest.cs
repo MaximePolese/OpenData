@@ -1,4 +1,4 @@
-﻿namespace OpenData
+﻿namespace ClassLibrary1
 {
     public interface IRequest
     {

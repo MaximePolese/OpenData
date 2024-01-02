@@ -1,9 +1,8 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using System.IO;
 using System.Net;
 
-namespace OpenData
+namespace ClassLibrary1
 {
     public class Request : IRequest
     {

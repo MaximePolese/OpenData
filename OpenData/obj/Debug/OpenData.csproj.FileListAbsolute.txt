@@ -7,3 +7,5 @@ C:\Users\maxime.polese\RiderProjects\OpenData\OpenData\obj\Debug\OpenData.pdb
 C:\Users\maxime.polese\RiderProjects\OpenData\OpenData\bin\Debug\Newtonsoft.Json.dll
 C:\Users\maxime.polese\RiderProjects\OpenData\OpenData\bin\Debug\Newtonsoft.Json.xml
 C:\Users\maxime.polese\RiderProjects\OpenData\OpenData\obj\Debug\OpenData.csproj.CopyComplete
+C:\Users\maxime.polese\RiderProjects\OpenData\OpenData\bin\Debug\ClassLibrary1.dll
+C:\Users\maxime.polese\RiderProjects\OpenData\OpenData\bin\Debug\ClassLibrary1.pdb
