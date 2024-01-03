@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using JetBrains.Annotations;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ClassLibrary1;
@@ -14,6 +15,10 @@ namespace OpenData.Tests
         {
             FormatData newRequest = new FormatData(new FakeRequest());
             List<Ligne> result = newRequest.DeserializeData();
+            foreach (var line in result)
+            {
+                Console.WriteLine(line.ToString());
+            }
 
             List<Ligne> expected = new List<Ligne>();
             expected.Add(new Ligne("SEM:1696", "Grenoble, Chavant", 5.73233, 45.18502, "SEM_GENCHAVANT",
