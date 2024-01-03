@@ -20,8 +20,9 @@ namespace OpenData.Tests
                 new string[] { "SEM:C4", "SEM:13" }));
             expected.Add(new Ligne("test", "test", 5.73233, 45.18502, "test", new string[] { "test1", "test2" }));
 
+            Assert.IsNotNull(result);
             Assert.AreEqual(expected.Count, result.Count);
-            
+
             for (int i = 0; i < expected.Count; i++)
             {
                 Assert.AreEqual(expected[i].id, result[i].id);
