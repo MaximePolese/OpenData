@@ -27,6 +27,7 @@ namespace OpenData.Tests
 
             Assert.IsNotNull(result);
             Assert.AreEqual(expected.Count, result.Count);
+            Assert.AreEqual("Grenoble, Chavant", result[0].name);
 
             for (int i = 0; i < expected.Count; i++)
             {
