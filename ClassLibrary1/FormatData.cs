@@ -10,6 +10,7 @@ namespace ClassLibrary1
         private readonly double _lon;
         private readonly double _lat;
         private readonly double _dist;
+        public List<Ligne> linesList;
 
         public FormatData(double lon, double lat, double dist)
             : this(new Request())
@@ -22,6 +23,7 @@ namespace ClassLibrary1
         public FormatData(IRequest newRequest)
         {
             _newRequest = newRequest;
+            linesList = new List<Ligne>();
         }
 
         private string MetroApiUrl()
@@ -32,7 +34,13 @@ namespace ClassLibrary1
 
         public List<Ligne> DeserializeData()
         {
-            return JsonConvert.DeserializeObject<List<Ligne>>(_newRequest.GetData(MetroApiUrl()));
+            return JsonConvert.DeserializeObject<List<Ligne>>(_newRequest.DoRequest(MetroApiUrl()));
+        }
+
+        public List<Ligne> LinesList
+        {
+            get => DeserializeData();
+            set => linesList = value;
         }
     }
 }

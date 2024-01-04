@@ -2,6 +2,6 @@
 {
     public interface IRequest
     {
-        string GetData(string url);
+        string DoRequest(string url);
     }
 }

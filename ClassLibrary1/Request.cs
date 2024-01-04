@@ -6,7 +6,7 @@ namespace ClassLibrary1
 {
     public class Request : IRequest
     {
-        public string GetData(string url)
+        public string DoRequest(string url)
         {
             WebRequest request = WebRequest.Create(url);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();

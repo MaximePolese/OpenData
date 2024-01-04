@@ -13,3 +13,8 @@ C:\Users\maxime.polese\RiderProjects\OpenData\WpfApplication1\obj\Debug\WpfAppli
 C:\Users\maxime.polese\RiderProjects\OpenData\WpfApplication1\obj\Debug\WpfApplication1.csproj.CoreCompileInputs.cache
 C:\Users\maxime.polese\RiderProjects\OpenData\WpfApplication1\obj\Debug\WpfApplication1.exe
 C:\Users\maxime.polese\RiderProjects\OpenData\WpfApplication1\obj\Debug\WpfApplication1.pdb
+C:\Users\maxime.polese\RiderProjects\OpenData\WpfApplication1\bin\Debug\ClassLibrary1.dll
+C:\Users\maxime.polese\RiderProjects\OpenData\WpfApplication1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\maxime.polese\RiderProjects\OpenData\WpfApplication1\bin\Debug\ClassLibrary1.pdb
+C:\Users\maxime.polese\RiderProjects\OpenData\WpfApplication1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\maxime.polese\RiderProjects\OpenData\WpfApplication1\obj\Debug\WpfApplication1.csproj.CopyComplete

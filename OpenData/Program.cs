@@ -16,7 +16,7 @@ namespace OpenData
             double dist = 0;
             FormatData newRequest = new FormatData(lon, lat, dist);
 
-            foreach (var line in newRequest.DeserializeData())
+            foreach (var line in newRequest.LinesList)
             {
                 Console.WriteLine(line.ToString());
             }
