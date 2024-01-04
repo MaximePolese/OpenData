@@ -6,7 +6,7 @@ namespace OpenData.Tests
 {
     public class FakeRequest : IRequest
     {
-        public string GetData()
+        public string GetData(string url)
         {
             List<Ligne> test = new List<Ligne>();
             test.Add(new Ligne("SEM:1696", "Grenoble, Chavant", 5.73233, 45.18502, "SEM_GENCHAVANT", new string[] { "SEM:C4", "SEM:13"}));
