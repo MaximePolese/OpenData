@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using ClassLibrary1;
 
@@ -15,8 +16,8 @@ namespace OpenData
             double lat = 45.18486504179179;
             double dist = 0;
             FormatData newRequest = new FormatData(lon, lat, dist);
-
-            foreach (var line in newRequest.LinesList)
+            List<Ligne> allLines = newRequest.LinesList;
+            foreach (var line in allLines)
             {
                 Console.WriteLine(line.ToString());
             }
