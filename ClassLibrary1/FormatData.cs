@@ -32,7 +32,13 @@ namespace ClassLibrary1
             return string.Format(CultureInfo.InvariantCulture,
                 "http://data.mobilites-m.fr/api/linesNear/json?x={0}&y={1}&dist={2}&details=true", _lon, _lat, _dist);
         }
-
+        
+        private string DisplayLine()
+        {
+            return string.Format(CultureInfo.InvariantCulture,
+                "http://data.mobilites-m.fr/api/lines/json?types=ligne&codes=SEM_C1", _lon, _lat, _dist);
+        }
+       
         public List<BusStop> DeserializeData()
         {
             return JsonConvert.DeserializeObject<List<BusStop>>(_newRequest.DoRequest(BusStopArroundMe()));

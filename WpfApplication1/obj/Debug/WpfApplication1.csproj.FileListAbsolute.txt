@@ -20,3 +20,4 @@ C:\Users\maxime.polese\RiderProjects\OpenData\WpfApplication1\bin\Debug\Newtonso
 C:\Users\maxime.polese\RiderProjects\OpenData\WpfApplication1\obj\Debug\WpfApplication1.csproj.CopyComplete
 C:\Users\maxime.polese\RiderProjects\OpenData\WpfApplication1\bin\Debug\Microsoft.Maps.MapControl.WPF.dll
 C:\Users\maxime.polese\RiderProjects\OpenData\WpfApplication1\bin\Debug\Microsoft.Maps.MapControl.WPF.xml
+C:\Users\maxime.polese\RiderProjects\OpenData\WpfApplication1\obj\Debug\WpfApplication1_Content.g.cs

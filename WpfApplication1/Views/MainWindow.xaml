@@ -6,7 +6,7 @@
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="Metro API" Height="Auto" Width="Auto" SizeToContent="WidthAndHeight">
+        Title="Metro API" Height="Auto" Width="Auto" SizeToContent="WidthAndHeight" Icon="SIT_TAGPRO_118_TAG-M-size-2x.ico">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />

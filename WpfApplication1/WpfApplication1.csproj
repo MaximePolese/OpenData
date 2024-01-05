@@ -95,5 +95,10 @@
         <Name>ClassLibrary1</Name>
       </ProjectReference>
     </ItemGroup>
+    <ItemGroup>
+      <Content Include="bin\Debug\SIT_TAGPRO_118_TAG-M-size-2x.ico" />
+      <Content Include="bin\Debug\views\SIT_TAGPRO_118_TAG-M-size-2x.ico" />
+      <Content Include="Views\SIT_TAGPRO_118_TAG-M-size-2x.ico" />
+    </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
 </Project>
