@@ -14,16 +14,16 @@ namespace OpenData.Tests
         public void Test()
         {
             FormatData newRequest = new FormatData(new FakeRequest());
-            List<Ligne> result = newRequest.DeserializeData();
+            List<BusStop> result = newRequest.DeserializeData();
             foreach (var line in result)
             {
                 Console.WriteLine(line.ToString());
             }
 
-            List<Ligne> expected = new List<Ligne>();
-            expected.Add(new Ligne("SEM:1696", "Grenoble, Chavant", 5.73233, 45.18502, "SEM_GENCHAVANT",
+            List<BusStop> expected = new List<BusStop>();
+            expected.Add(new BusStop("SEM:1696", "Grenoble, Chavant", 5.73233, 45.18502, "SEM_GENCHAVANT",
                 new string[] { "SEM:C4", "SEM:13" }));
-            expected.Add(new Ligne("test", "test", 5.73233, 45.18502, "test", new string[] { "test1", "test2" }));
+            expected.Add(new BusStop("test", "test", 5.73233, 45.18502, "test", new string[] { "test1", "test2" }));
 
             Assert.IsNotNull(result);
             Assert.AreEqual(expected.Count, result.Count);

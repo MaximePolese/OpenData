@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
         Title="Metro API" Height="Auto" Width="Auto" SizeToContent="WidthAndHeight">
@@ -12,6 +13,7 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="500" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -30,15 +32,17 @@
         <TextBox Grid.Column="1" Grid.Row="1" Height="25" Width="150" BorderBrush="Gray" BorderThickness="1"
                  Text="{Binding Lat}" Margin="5 0 5 5 " VerticalAlignment="Top" HorizontalAlignment="Left" />
 
-        <Label Grid.Column="2" Grid.Row="0" Content="Distance" Margin="5 5 5 0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+        <Label Grid.Column="2" Grid.Row="0" Content="Distance" Margin="5 5 5 0" VerticalAlignment="Top"
+               HorizontalAlignment="Left" />
         <TextBox Grid.Column="2" Grid.Row="1" Height="25" Width="150" BorderBrush="Gray" BorderThickness="1"
                  Text="{Binding Dist}" Margin="5 0 5 5" VerticalAlignment="Top" HorizontalAlignment="Left" />
 
-        <Button Grid.Column="3" Grid.Row="1" Height="25" Command="{Binding Search}" Content="Search" Width="100"
+        <Button Grid.Column="3" Grid.Row="1" Height="25" Command="{Binding Search}" Content="SEARCH" Width="100"
                 VerticalContentAlignment="Center" Margin="25 0 25 5" VerticalAlignment="top"
-                HorizontalAlignment="Left" Background="Chartreuse"/>
+                HorizontalAlignment="Left" Background="Chartreuse" />
 
-        <ListView Height="300" VerticalContentAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"
+        <ListView Height="400" VerticalContentAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Visible"
+                  ScrollViewer.CanContentScroll="True"
                   Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2" ItemsSource="{Binding ShowData}" Margin="25">
             <ListView.View>
                 <GridView>
@@ -46,11 +50,29 @@
                     <GridViewColumn Width="150" DisplayMemberBinding="{Binding name}" Header="Name" />
                     <GridViewColumn Width="100" DisplayMemberBinding="{Binding lon}" Header="Longitude" />
                     <GridViewColumn Width="100" DisplayMemberBinding="{Binding lat}" Header="Latitude" />
-                    <GridViewColumn Width="150"  DisplayMemberBinding="{Binding zone}" Header="Zone" />
+                    <GridViewColumn Width="150" DisplayMemberBinding="{Binding zone}" Header="Zone" />
                     <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding lines}" Header="Connection Lines" />
                 </GridView>
             </ListView.View>
         </ListView>
 
+        <m:Map x:Name="myMap" CredentialsProvider="Au5kaMYJOxpMPXbkFydIfrmaJA9GtoVggg1D1X7AaL6xwkAolNPG17YSYmHcQhnV"
+               Grid.Column="4"
+               Grid.RowSpan="3" Grid.Row="0" Margin="0 25 25 25" Height="Auto"
+               Center="45.18486504179179, 5.731181509376984" ZoomLevel="14" >
+        <m:MapPolyline Stroke="Blue" StrokeThickness="5"
+                       Locations="45.19892,5.71108 45.19894,5.71114 45.19896,5.71123 45.19953,5.71366 45.19956,5.71413 45.19967,5.7141 45.19989,5.71404 45.20037,5.71392 45.20091,5.71367 45.2008,5.71319"
+                       Opacity="0.7" />
+        <!-- <m:Pushpin Location="45.18486504179179, 5.731181509376984" /> -->
+        <!-- <Canvas Width="50" Height="80"  -->
+        <!--         m:MapLayer.Position="45.18486504179179, 5.731181509376984"  -->
+        <!--         m:MapLayer.PositionOrigin="BottomCenter" Opacity="1"> -->
+        <!--     <Path Data="M 0,0 L 50,0 50,50 25,80 0,50 0,0" Fill="Red" Stroke ="Black" StrokeThickness="2" /> -->
+        <!--     <TextBlock FontSize="10" Foreground="Black" Margin="5" TextAlignment="Center"> -->
+        <!--         Vous êtes <LineBreak /> -->
+        <!--         ICI <LineBreak /> -->
+        <!--     </TextBlock> -->
+        <!-- </Canvas> -->
+        </m:Map>
     </Grid>
 </Window>

@@ -16,8 +16,8 @@ namespace OpenData
             double lat = 45.18486504179179;
             double dist = 0;
             FormatData newRequest = new FormatData(lon, lat, dist);
-            List<Ligne> allLines = newRequest.LinesList;
-            foreach (var line in allLines)
+            List<BusStop> busStopArroundMe = newRequest.BusStopList;
+            foreach (var line in busStopArroundMe)
             {
                 Console.WriteLine(line.ToString());
             }

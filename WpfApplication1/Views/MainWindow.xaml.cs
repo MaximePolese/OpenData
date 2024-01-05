@@ -1,5 +1,5 @@
 ﻿using WpfApplication1.ViewModels;
-
+using Microsoft.Maps.MapControl.WPF;
 namespace WpfApplication1.Views
 {
     /// <summary>
@@ -12,6 +12,7 @@ namespace WpfApplication1.Views
             InitializeComponent();
             MainViewModel mainViewModel = new MainViewModel();
             DataContext = mainViewModel;
+            myMap.Mode = new AerialMode(true);
         }
     }
 }
