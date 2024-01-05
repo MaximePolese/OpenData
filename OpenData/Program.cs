@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using ClassLibrary1;
+using Newtonsoft.Json;
 
 namespace OpenData
 {
@@ -15,12 +16,18 @@ namespace OpenData
             double lon = 5.731181509376984;
             double lat = 45.18486504179179;
             double dist = 0;
-            FormatData newRequest = new FormatData(lon, lat, dist);
-            List<BusStop> busStopArroundMe = newRequest.BusStopList;
-            foreach (var line in busStopArroundMe)
+            FormatData request1 = new FormatData();
+            string url = request1.BusStopArroundMe(lon, lat, dist);
+            string json = request1.GetData(url);
+            List<BusStop> busStopArroundMe = request1.DeserializeBusStopData(json);
+            foreach (var busStop in busStopArroundMe)
             {
-                Console.WriteLine(line.ToString());
+                Console.WriteLine(busStop.ToString());
             }
+
+            // Request test = new Request();
+            // string result = test.DoRequest("http://data.mobilites-m.fr/api/lines/json?types=ligne&codes=SEM_13");
+            // Console.WriteLine(result);
         }
     }
 }

@@ -13,8 +13,8 @@ namespace OpenData.Tests
         [TestMethod]
         public void Test()
         {
-            FormatData newRequest = new FormatData(new FakeRequest());
-            List<BusStop> result = newRequest.DeserializeData();
+            FormatData request1 = new FormatData(new FakeRequest());
+            List<BusStop> result = request1.DeserializeBusStopData(json);
             foreach (var line in result)
             {
                 Console.WriteLine(line.ToString());

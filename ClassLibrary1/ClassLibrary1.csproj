@@ -45,6 +45,7 @@
         <Compile Include="FormatData.cs" />
         <Compile Include="IRequest.cs" />
         <Compile Include="BusStop.cs" />
+        <Compile Include="Line.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="Request.cs" />
     </ItemGroup>

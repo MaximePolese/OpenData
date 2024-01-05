@@ -17,7 +17,9 @@ namespace WpfApplication1.ViewModels
         private double _lon;
         private double _lat;
         private double _dist;
-        private FormatData _newRequest;
+        // private FormatData request1;
+        // public ObservableCollection<Pushpin> Pin { get; set; }
+        // public ObservableCollection<Line> Line { get; set; }
 
         public double Lon
         {
@@ -44,6 +46,7 @@ namespace WpfApplication1.ViewModels
             _lon = 5.731181509376984;
             _lat = 45.18486504179179;
             _dist = 0;
+            // Pin = new ObservableCollection<Pushpin>();
         }
 
         private bool CanDoNewRequest(object arg)
@@ -54,15 +57,15 @@ namespace WpfApplication1.ViewModels
         private void NewRequest(object obj)
         {
             ShowData.Clear();
-            _newRequest = new FormatData(_lon, _lat, _dist);
-            List<BusStop> allLines = _newRequest.BusStopList;
-            foreach (var line in allLines)
+            FormatData request1 = new FormatData();
+            string url = request1.BusStopArroundMe(_lon, _lat, _dist);
+            string json = request1.GetData(url);
+            List<BusStop> busStopArroundMe = request1.DeserializeBusStopData(json);
+            foreach (var busStop in busStopArroundMe)
             {
-                ShowData.Add(line);
+                ShowData.Add(busStop);
             }
-            // Pushpin pin = new Pushpin();
-            // pin.Location = new Location(_lat, _lon);
-            
+
             // myPath = new Path();
             // myPath.Stroke = System.Windows.Media.Brushes.Black;
             // myPath.Fill = System.Windows.Media.Brushes.MediumSlateBlue;
