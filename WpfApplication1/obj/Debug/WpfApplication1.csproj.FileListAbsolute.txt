@@ -18,3 +18,5 @@ C:\Users\maxime.polese\RiderProjects\OpenData\WpfApplication1\bin\Debug\Newtonso
 C:\Users\maxime.polese\RiderProjects\OpenData\WpfApplication1\bin\Debug\ClassLibrary1.pdb
 C:\Users\maxime.polese\RiderProjects\OpenData\WpfApplication1\bin\Debug\Newtonsoft.Json.xml
 C:\Users\maxime.polese\RiderProjects\OpenData\WpfApplication1\obj\Debug\WpfApplication1.csproj.CopyComplete
+C:\Users\maxime.polese\RiderProjects\OpenData\WpfApplication1\bin\Debug\Microsoft.Maps.MapControl.WPF.dll
+C:\Users\maxime.polese\RiderProjects\OpenData\WpfApplication1\bin\Debug\Microsoft.Maps.MapControl.WPF.xml

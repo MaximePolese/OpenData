@@ -50,6 +50,7 @@ namespace WpfApplication1.ViewModels
 
         private void NewRequest(object obj)
         {
+            ShowData.Clear();
             _newRequest = new FormatData(_lon, _lat, _dist);
             List<Ligne> allLines = _newRequest.LinesList;
             foreach (var line in allLines)
