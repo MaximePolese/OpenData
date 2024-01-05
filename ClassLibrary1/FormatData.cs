@@ -28,6 +28,7 @@ namespace ClassLibrary1
 
         private string MetroApiUrl()
         {
+            //https://www.mobilites-m.fr/pages/opendata/OpenDataApi.html
             return string.Format(CultureInfo.InvariantCulture,
                 "http://data.mobilites-m.fr/api/linesNear/json?x={0}&y={1}&dist={2}&details=true", _lon, _lat, _dist);
         }
