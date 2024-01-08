@@ -1,10 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿// {"id":"SEM:1696","name":"Grenoble, Chavant","lon":5.73233,"lat":45.18502,"zone":"SEM_GENCHAVANT","lines":["SEM:C4","SEM:13"]}
+using Newtonsoft.Json;
 
 namespace ClassLibrary1
 {
     public class BusStop
     {
-        // {"id":"SEM:1696","name":"Grenoble, Chavant","lon":5.73233,"lat":45.18502,"zone":"SEM_GENCHAVANT","lines":["SEM:C4","SEM:13"]}
+      
         [JsonProperty("id")] public string id { get; private set; }
         [JsonProperty("name")] public string name { get; private set; }
         [JsonProperty("lon")] public double lon { get; private set; }

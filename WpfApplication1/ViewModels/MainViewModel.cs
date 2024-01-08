@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -10,38 +12,75 @@ using Microsoft.Maps.MapControl.WPF;
 
 namespace WpfApplication1.ViewModels
 {
-    public class MainViewModel
+    public class MainViewModel : INotifyPropertyChanged
     {
-        public ICommand Search { get; set; }
+        private ICommand _search;
+        public event PropertyChangedEventHandler PropertyChanged;
         public ObservableCollection<BusStop> ShowData { get; set; }
+        private FormatData request1;
         private double _lon;
         private double _lat;
+
         private double _dist;
+
         // private FormatData request1;
         // public ObservableCollection<Pushpin> Pin { get; set; }
         // public ObservableCollection<Line> Line { get; set; }
+        public ICommand Search
+        {
+            get => _search ?? (_search = new RelayCommand(NewRequest, CanDoNewRequest));
+            set
+            {
+                if (value != null) _search = value;
+            }
+        }
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        protected bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
+        {
+            if (EqualityComparer<T>.Default.Equals(field, value)) return false;
+            field = value;
+            OnPropertyChanged(propertyName);
+            return true;
+        }
 
         public double Lon
         {
             get => _lon;
-            set => _lon = value;
+            set
+            {
+                _lon = value;
+                OnPropertyChanged("Lon");
+            }
         }
 
         public double Lat
         {
             get => _lat;
-            set => _lat = value;
+            set
+            {
+                _lon = value;
+                OnPropertyChanged("Lat");
+            }
         }
 
         public double Dist
         {
             get => _dist;
-            set => _dist = value;
+            set
+            {
+                _lon = value;
+                OnPropertyChanged("Dist");
+            }
         }
 
         public MainViewModel()
         {
-            Search = new RelayCommand(NewRequest, CanDoNewRequest);
+            request1 = new FormatData();
             ShowData = new ObservableCollection<BusStop>();
             _lon = 5.731181509376984;
             _lat = 45.18486504179179;
@@ -57,27 +96,24 @@ namespace WpfApplication1.ViewModels
         private void NewRequest(object obj)
         {
             ShowData.Clear();
-            FormatData request1 = new FormatData();
-            string url = request1.BusStopArroundMe(_lon, _lat, _dist);
-            string json = request1.GetData(url);
-            List<BusStop> busStopArroundMe = request1.DeserializeBusStopData(json);
+            List<BusStop> busStopArroundMe = request1.GetBusStopArroundMe(_lon, _lat, _dist);
             foreach (var busStop in busStopArroundMe)
             {
                 ShowData.Add(busStop);
             }
-
-            // myPath = new Path();
-            // myPath.Stroke = System.Windows.Media.Brushes.Black;
-            // myPath.Fill = System.Windows.Media.Brushes.MediumSlateBlue;
-            // myPath.StrokeThickness = 4;
-            // myPath.HorizontalAlignment = HorizontalAlignment.Left;
-            // myPath.VerticalAlignment = VerticalAlignment.Center;
-            // EllipseGeometry myEllipseGeometry = new EllipseGeometry();
-            // myEllipseGeometry.Center = new System.Windows.Point(_lat,_lon);
-            // myEllipseGeometry.RadiusX = 25;
-            // myEllipseGeometry.RadiusY = 25;
-            // myPath.Data = myEllipseGeometry;
-            // myGrid.Children.Add(myPath);
         }
     }
 }
+
+// myPath = new Path();
+// myPath.Stroke = System.Windows.Media.Brushes.Black;
+// myPath.Fill = System.Windows.Media.Brushes.MediumSlateBlue;
+// myPath.StrokeThickness = 4;
+// myPath.HorizontalAlignment = HorizontalAlignment.Left;
+// myPath.VerticalAlignment = VerticalAlignment.Center;
+// EllipseGeometry myEllipseGeometry = new EllipseGeometry();
+// myEllipseGeometry.Center = new System.Windows.Point(_lat,_lon);
+// myEllipseGeometry.RadiusX = 25;
+// myEllipseGeometry.RadiusY = 25;
+// myPath.Data = myEllipseGeometry;
+// myGrid.Children.Add(myPath);

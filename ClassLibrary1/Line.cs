@@ -71,6 +71,8 @@ namespace ClassLibrary1
             Coordinates = coordinates;
         }
     }
+}
+
 //     {
 //     "description": "Fichier de description des lignes de transport en commun",
 //     "type": "FeatureCollection",
@@ -102,4 +104,3 @@ namespace ClassLibrary1
 //     }
 //     ]
 // }
-}
