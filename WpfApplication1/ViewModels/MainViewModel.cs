@@ -20,7 +20,6 @@ namespace WpfApplication1.ViewModels
         private FormatData request1;
         private double _lon;
         private double _lat;
-
         private double _dist;
 
         // private FormatData request1;
