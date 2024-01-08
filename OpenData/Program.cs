@@ -24,13 +24,13 @@ namespace OpenData
                 Console.WriteLine(busStop.ToString());
             }
             
-            Request test = new Request();
-            string result = test.DoRequest("http://data.mobilites-m.fr/api/lines/json?types=ligne&codes=SEM_13");
-            Console.WriteLine(result);
-            
-            MetroData request2 = new MetroData();
-            Line lineinfo = request2.GetLineInfo("SEM_13");
-            Console.WriteLine(lineinfo);
+            // Request test = new Request();
+            // string result = test.DoRequest("http://data.mobilites-m.fr/api/lines/json?types=ligne&codes=SEM_13");
+            // Console.WriteLine(result);
+            //
+            // MetroData request2 = new MetroData();
+            // Line lineinfo = request2.GetLineInfo("SEM_13");
+            // Console.WriteLine(lineinfo);
         }
     }
 }

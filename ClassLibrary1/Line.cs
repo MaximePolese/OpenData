@@ -27,9 +27,9 @@ namespace ClassLibrary1
         public Feature(string featureType, string featureDescription)
         {
             FeatureType = featureType;
-            Properties = new Properties();
+            // Properties = new Properties();
             FeatureDescription = featureDescription;
-            Geometry = new Geometry(type, coordinates);
+            // Geometry = new Geometry(type, coordinates);
         }
     }
 

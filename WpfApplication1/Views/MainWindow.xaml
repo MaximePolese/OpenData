@@ -59,11 +59,18 @@
 
         <m:Map x:Name="myMap" CredentialsProvider="Au5kaMYJOxpMPXbkFydIfrmaJA9GtoVggg1D1X7AaL6xwkAolNPG17YSYmHcQhnV"
                Grid.Column="4"
-               Grid.RowSpan="3" Grid.Row="0" Margin="0 25 25 25" Height="Auto"
-               Center="45.18486504179179, 5.731181509376984" ZoomLevel="14">
+               Grid.RowSpan="3" Grid.Row="0" Margin="0 25 25 25" Height="Auto" Center="{Binding Center, Mode=TwoWay}"
+               ZoomLevel="{Binding Zoom, Mode=TwoWay}">
+            <!-- MouseDoubleClick="MapWithPushpins_MouseDoubleClick"> -->
+            <!-- Center="45.18486504179179, 5.731181509376984" -->
 
-            <!-- MouseDoubleClick="MapWithPushpins_MouseDoubleClick" -->
-            <m:Pushpin Location="45.18486504179179, 5.731181509376984" />
+            <m:MapItemsControl ItemsSource="{Binding MyPosition}">
+                <m:MapItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <m:Pushpin Location="{Binding}" Background="Red" />
+                    </DataTemplate>
+                </m:MapItemsControl.ItemTemplate>
+            </m:MapItemsControl>
 
             <m:MapItemsControl ItemsSource="{Binding BusStopArroundMe}">
                 <m:MapItemsControl.ItemTemplate>

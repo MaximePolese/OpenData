@@ -9,17 +9,16 @@ namespace ClassLibrary1
         [JsonProperty("lon")] public double lon { get; private set; }
         [JsonProperty("lat")] public double lat { get; private set; }
         [JsonProperty("zone")] public string zone { get; private set; }
-        
         [JsonProperty("lines")] public ConnectionLine[] Connectionlines { get; private set; }
         
-        public BusStop(string id, string name, double lon, double lat, string zone, ConnectionLine[] connectionLines)
+        public BusStop2(string id, string name, double lon, double lat, string zone, ConnectionLine[] connectionLines)
         {
             this.id = id;
             this.name = name;
             this.lon = lon;
             this.lat = lat;
             this.zone = zone;
-            Connectionlines = new ConnectionLine[];
+            Connectionlines = connectionLines;
         }
 
         public override string ToString()

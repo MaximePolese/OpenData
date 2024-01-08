@@ -9,6 +9,7 @@ using System.Windows.Media;
 using WpfApplication1.Commands;
 using ClassLibrary1;
 using Microsoft.Maps.MapControl.WPF;
+using WpfApplication1.ViewModels.Tools;
 
 namespace WpfApplication1.ViewModels
 {
@@ -19,18 +20,25 @@ namespace WpfApplication1.ViewModels
         private double _lon;
         private double _lat;
         private double _dist;
-        private MetroData _request1;
+        private Location _center;
+        private double _zoom;
+        private IDataAccess _request1;
+
         public ObservableCollection<BusStop> BusStopList { get; set; }
         public ObservableCollection<Location> BusStopArroundMe { get; set; }
+        public ObservableCollection<Location> MyPosition { get; set; }
 
         public MainViewModel()
         {
             _lon = 5.731181509376984;
             _lat = 45.18486504179179;
-            _dist = 0;
+            _dist = 300;
+            _zoom = 13;
+            _center = new Location(Lat, Lon);
             _request1 = new MetroData();
             BusStopList = new ObservableCollection<BusStop>();
             BusStopArroundMe = new ObservableCollection<Location>();
+            MyPosition = new ObservableCollection<Location>();
         }
 
         public ICommand Search
@@ -93,6 +101,26 @@ namespace WpfApplication1.ViewModels
             }
         }
 
+        public Location Center
+        {
+            get { return _center; }
+            set
+            {
+                _center = value;
+                OnPropertyChanged("Center");
+            }
+        }
+
+        public double Zoom
+        {
+            get => _zoom;
+            set
+            {
+                _zoom = value;
+                OnPropertyChanged("Zoom");
+            }
+        }
+
         private bool CanDoNewRequest(object arg)
         {
             return true;
@@ -100,8 +128,15 @@ namespace WpfApplication1.ViewModels
 
         private void NewRequest(object obj)
         {
+            MyPosition.Clear();
             BusStopList.Clear();
             BusStopArroundMe.Clear();
+
+            MyPosition.Add(new Location(_lat, _lon));
+            Center.Latitude = Lat;
+            Center.Longitude = Lon;
+            Zoom = 17;
+            
             List<BusStop> busStopArroundMe = _request1.GetBusStopArroundMe(_lon, _lat, _dist);
             foreach (var busStop in busStopArroundMe)
             {
@@ -109,10 +144,5 @@ namespace WpfApplication1.ViewModels
                 BusStopArroundMe.Add(new Location(busStop.lat, busStop.lon));
             }
         }
-
-        // private void MapWithPushpins_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        // {
-        //     throw new System.NotImplementedException();
-        // }
     }
 }
