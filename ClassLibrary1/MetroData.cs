@@ -5,16 +5,16 @@ using Newtonsoft.Json;
 
 namespace ClassLibrary1
 {
-    public class FormatData : IDataAccess
+    public class MetroData : IDataAccess
     {
         private readonly IRequest _newRequest;
 
-        public FormatData()
+        public MetroData()
             : this(new Request())
         {
         }
 
-        public FormatData(IRequest newRequest)
+        public MetroData(IRequest newRequest)
         {
             _newRequest = newRequest;
         }

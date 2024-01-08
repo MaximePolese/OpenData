@@ -19,7 +19,7 @@ namespace WpfApplication1.ViewModels
         private double _lon;
         private double _lat;
         private double _dist;
-        private FormatData _request1;
+        private MetroData _request1;
         public ObservableCollection<BusStop> BusStopList { get; set; }
         public ObservableCollection<Location> BusStopArroundMe { get; set; }
 
@@ -28,7 +28,7 @@ namespace WpfApplication1.ViewModels
             _lon = 5.731181509376984;
             _lat = 45.18486504179179;
             _dist = 0;
-            _request1 = new FormatData();
+            _request1 = new MetroData();
             BusStopList = new ObservableCollection<BusStop>();
             BusStopArroundMe = new ObservableCollection<Location>();
         }

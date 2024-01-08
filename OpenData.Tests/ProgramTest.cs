@@ -13,7 +13,7 @@ namespace OpenData.Tests
         [TestMethod]
         public void Test()
         {
-            FormatData request1 = new FormatData(new FakeRequest());
+            MetroData request1 = new MetroData(new FakeRequest());
             List<BusStop> result = request1.GetBusStopArroundMe(0,0,0);
             foreach (var line in result)
             {

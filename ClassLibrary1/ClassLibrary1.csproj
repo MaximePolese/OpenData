@@ -43,7 +43,7 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="IDataAccess.cs" />
-        <Compile Include="FormatData.cs" />
+        <Compile Include="MetroData.cs" />
         <Compile Include="IRequest.cs" />
         <Compile Include="BusStop.cs" />
         <Compile Include="Line.cs" />
