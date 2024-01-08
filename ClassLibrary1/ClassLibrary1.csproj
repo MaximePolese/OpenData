@@ -42,6 +42,7 @@
         <Reference Include="System.Xml"/>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="BusStop2.cs" />
         <Compile Include="IDataAccess.cs" />
         <Compile Include="MetroData.cs" />
         <Compile Include="IRequest.cs" />

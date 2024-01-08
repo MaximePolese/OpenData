@@ -5,31 +5,31 @@ namespace ClassLibrary1
 {
     public class Line
     {
-        [JsonProperty("description")] public string Description { get; private set; }
-        [JsonProperty("type")] public string Type { get; private set; }
+        [JsonProperty("description")] public string LineDescription { get; private set; }
+        [JsonProperty("type")] public string LineType { get; private set; }
         [JsonProperty("features")] public List<Feature> Features { get; private set; }
 
-        public Line(string description, string type, List<Feature> features)
+        public Line(string lineDescription, string lineType)
         {
-            Description = description;
-            Type = type;
-            Features = features;
+            LineDescription = lineDescription;
+            LineType = lineType;
+            Features = new List<Feature>();
         }
     }
 
     public class Feature
     {
-        [JsonProperty("type")] public string Type { get; private set; }
+        [JsonProperty("type")] public string FeatureType { get; private set; }
         [JsonProperty("properties")] public Properties Properties { get; private set; }
-        [JsonProperty("description")] public string Description { get; private set; }
+        [JsonProperty("description")] public string FeatureDescription { get; private set; }
         [JsonProperty("geometry")] public Geometry Geometry { get; private set; }
 
-        public Feature(string type, Properties properties, string description, Geometry geometry)
+        public Feature(string featureType, string featureDescription)
         {
-            Type = type;
-            Properties = properties;
-            Description = description;
-            Geometry = geometry;
+            FeatureType = featureType;
+            Properties = new Properties();
+            FeatureDescription = featureDescription;
+            Geometry = new Geometry(type, coordinates);
         }
     }
 
