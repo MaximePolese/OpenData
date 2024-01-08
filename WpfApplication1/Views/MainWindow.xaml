@@ -6,7 +6,8 @@
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="Metro API" Height="Auto" Width="Auto" SizeToContent="WidthAndHeight" Icon="SIT_TAGPRO_118_TAG-M-size-2x.ico">
+        Title="Metro API" Height="Auto" Width="Auto" SizeToContent="WidthAndHeight"
+        Icon="SIT_TAGPRO_118_TAG-M-size-2x.ico">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -43,7 +44,7 @@
 
         <ListView Height="400" VerticalContentAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Visible"
                   ScrollViewer.CanContentScroll="True"
-                  Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2" ItemsSource="{Binding ShowData}" Margin="25">
+                  Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2" ItemsSource="{Binding BusStopList}" Margin="25">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="100" DisplayMemberBinding="{Binding id}" Header="Id" />
@@ -59,20 +60,22 @@
         <m:Map x:Name="myMap" CredentialsProvider="Au5kaMYJOxpMPXbkFydIfrmaJA9GtoVggg1D1X7AaL6xwkAolNPG17YSYmHcQhnV"
                Grid.Column="4"
                Grid.RowSpan="3" Grid.Row="0" Margin="0 25 25 25" Height="Auto"
-               Center="45.18486504179179, 5.731181509376984" ZoomLevel="14" >
-        <m:MapPolyline Stroke="Blue" StrokeThickness="5"
-                       Locations="45.19892,5.71108 45.19894,5.71114 45.19896,5.71123 45.19953,5.71366 45.19956,5.71413 45.19967,5.7141 45.19989,5.71404 45.20037,5.71392 45.20091,5.71367 45.2008,5.71319"
-                       Opacity="0.7" />
-        <!-- <m:Pushpin Location="45.18486504179179, 5.731181509376984" /> -->
-        <Canvas Width="50" Height="80"
-                m:MapLayer.Position="45.18486504179179, 5.731181509376984"
-                m:MapLayer.PositionOrigin="BottomCenter" Opacity="1">
-            <Path Data="M 0,0 L 50,0 50,50 25,80 0,50 0,0" Fill="Red" Stroke ="Black" StrokeThickness="2" />
-            <TextBlock FontSize="10" Foreground="Black" Margin="5" TextAlignment="Center">
-                Vous êtes <LineBreak />
-                ICI <LineBreak />
-            </TextBlock>
-        </Canvas>
+               Center="45.18486504179179, 5.731181509376984" ZoomLevel="14">
+
+            <!-- MouseDoubleClick="MapWithPushpins_MouseDoubleClick" -->
+            <m:Pushpin Location="45.18486504179179, 5.731181509376984" />
+
+            <m:MapItemsControl ItemsSource="{Binding BusStopArroundMe}">
+                <m:MapItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <m:Pushpin Location="{Binding}" Background="#7FFF00" />
+                    </DataTemplate>
+                </m:MapItemsControl.ItemTemplate>
+            </m:MapItemsControl>
+
+            <m:MapPolyline Stroke="Blue" StrokeThickness="5"
+                           Locations="45.19892,5.71108 45.19894,5.71114 45.19896,5.71123 45.19953,5.71366 45.19956,5.71413 45.19967,5.7141 45.19989,5.71404 45.20037,5.71392 45.20091,5.71367 45.2008,5.71319"
+                           Opacity="0.7" />
         </m:Map>
     </Grid>
 </Window>

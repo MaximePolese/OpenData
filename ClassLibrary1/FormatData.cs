@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using Newtonsoft.Json;
 
 namespace ClassLibrary1
 {
-    public class FormatData
+    public class FormatData : IDataAccess
     {
         private readonly IRequest _newRequest;
 
@@ -18,30 +19,44 @@ namespace ClassLibrary1
             _newRequest = newRequest;
         }
 
-        public string BusStopArroundMe(double lon, double lat, double dist)
+        private string BusStopArroundMeUrl(double lon, double lat, double dist)
         {
-            return string.Format(CultureInfo.InvariantCulture,
+            if (dist > 2000)
+            {
+                dist = 2000;
+            }
+            string url = string.Format(CultureInfo.InvariantCulture,
                 "http://data.mobilites-m.fr/api/linesNear/json?x={0}&y={1}&dist={2}&details=true", lon, lat, dist);
+            Console.WriteLine(url);
+            return url;
         }
 
-        public string GetData(string url)
+        private string GetData(string url)
         {
             return _newRequest.DoRequest(url);
         }
 
-        public List<BusStop> DeserializeBusStopData(string json)
+        private List<BusStop> DeserializeBusStopData(string json)
         {
             return JsonConvert.DeserializeObject<List<BusStop>>(json);
         }
 
         public List<BusStop> GetBusStopArroundMe(double lon, double lat, double dist)
         {
-            return DeserializeBusStopData(GetData(BusStopArroundMe(lon, lat, dist)));
+            return DeserializeBusStopData(GetData(BusStopArroundMeUrl(lon, lat, dist)));
         }
 
-        private string GetLineInfo(string code)
+        private string LineInfoUrl(string lineCode)
         {
-            return "http://data.mobilites-m.fr/api/lines/json?types=ligne&codes=" + code + "";
+            return "http://data.mobilites-m.fr/api/lines/json?types=ligne&codes=" + lineCode + "";
+        }
+        private Line DeserializeLineData(string json)
+        {
+            return JsonConvert.DeserializeObject<Line>(json);
+        }
+        public Line GetLineInfo(string lineCode)
+        {
+            return DeserializeLineData(GetData(LineInfoUrl(lineCode)));
         }
     }
 }
