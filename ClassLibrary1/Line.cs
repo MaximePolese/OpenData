@@ -3,76 +3,40 @@ using Newtonsoft.Json;
 
 namespace ClassLibrary1
 {
-    public class Line
-    {
-        [JsonProperty("description")] public string LineDescription { get; private set; }
-        [JsonProperty("type")] public string LineType { get; private set; }
-        [JsonProperty("features")] public List<Feature> Features { get; private set; }
-
-        public Line(string lineDescription, string lineType)
-        {
-            LineDescription = lineDescription;
-            LineType = lineType;
-            Features = new List<Feature>();
-        }
-    }
-
-    public class Feature
-    {
-        [JsonProperty("type")] public string FeatureType { get; private set; }
-        [JsonProperty("properties")] public Properties Properties { get; private set; }
-        [JsonProperty("description")] public string FeatureDescription { get; private set; }
-        [JsonProperty("geometry")] public Geometry Geometry { get; private set; }
-
-        public Feature(string featureType, string featureDescription)
-        {
-            FeatureType = featureType;
-            // Properties = new Properties();
-            FeatureDescription = featureDescription;
-            // Geometry = new Geometry(type, coordinates);
-        }
-    }
-
     public class Properties
     {
-        [JsonProperty("numero")] public string Numero { get; private set; }
-        [JsonProperty("pmr")] public string Pmr { get; private set; }
-        [JsonProperty("couleur")] public string Couleur { get; private set; }
-        [JsonProperty("code")] public string Code { get; private set; }
-        [JsonProperty("libelle")] public string Libelle { get; private set; }
-        [JsonProperty("zonesArret")] public List<string> ZonesArret { get; private set; }
-        [JsonProperty("type")] public string Type { get; private set; }
-        [JsonProperty("lineId")] public string LineId { get; private set; }
-        [JsonProperty("shape")] public string Shape { get; private set; }
-
-        public Properties(string numero, string pmr, string couleur, string code, string libelle,
-            List<string> zonesArret, string type, string lineId, string shape)
-        {
-            Numero = numero;
-            Pmr = pmr;
-            Couleur = couleur;
-            Code = code;
-            Libelle = libelle;
-            ZonesArret = zonesArret;
-            Type = type;
-            LineId = lineId;
-            Shape = shape;
-        }
+        [JsonProperty("NUMERO")] public string NUMERO { get; set; }
+        [JsonProperty("PMR")] public string PMR { get; set; }
+        [JsonProperty("COULEUR")] public string COULEUR { get; set; }
+        [JsonProperty("CODE")] public string CODE { get; set; }
+        [JsonProperty("LIBELLE")] public string LIBELLE { get; set; }
+        [JsonProperty("ZONES_ARRET")] public List<string> ZONES_ARRET { get; set; }
+        [JsonProperty("type")] public string type { get; set; }
+        [JsonProperty("id")] public string id { get; set; }
+        [JsonProperty("shape")] public string shape { get; set; }
     }
 
     public class Geometry
     {
-        [JsonProperty("type")] public string Type { get; private set; }
-        [JsonProperty("coordinates")] public string Coordinates { get; private set; }
+        [JsonProperty("type")] public string type { get; set; }
+        [JsonProperty("coordinates")] public List<List<List<double>>> coordinates { get; set; }
+    }
 
-        public Geometry(string type, string coordinates)
-        {
-            Type = type;
-            Coordinates = coordinates;
-        }
+    public class Feature
+    {
+        [JsonProperty("type")] public string type { get; set; }
+        [JsonProperty("properties")] public Properties properties { get; set; }
+        [JsonProperty("description")] public string description { get; set; }
+        [JsonProperty("geometry")] public Geometry geometry { get; set; }
+    }
+
+    public class Line
+    {
+        [JsonProperty("description")] public string description { get; set; }
+        [JsonProperty("type")] public string type { get; set; }
+        [JsonProperty("features")] public List<Feature> features { get; set; }
     }
 }
-
 //     {
 //     "description": "Fichier de description des lignes de transport en commun",
 //     "type": "FeatureCollection",
@@ -103,4 +67,3 @@ namespace ClassLibrary1
 //         }
 //     }
 //     ]
-// }
