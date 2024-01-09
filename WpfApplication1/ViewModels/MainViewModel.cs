@@ -159,7 +159,7 @@ namespace WpfApplication1.ViewModels
             {
                 val = 14.7;
             }
-            else if (dist > 1500 && dist <= 2000)
+            else if (dist > 1500)
             {
                 val = 14.3;
             }

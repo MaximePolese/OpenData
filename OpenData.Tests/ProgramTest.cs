@@ -14,7 +14,7 @@ namespace OpenData.Tests
         public void Test()
         {
             MetroData request1 = new MetroData(new FakeRequest());
-            List<BusStop> result = request1.GetBusStopArroundMe(0,0,0);
+            List<BusStop> result = request1.GetBusStopArroundMe(0, 0, 0);
             foreach (var line in result)
             {
                 Console.WriteLine(line.ToString());
@@ -22,8 +22,9 @@ namespace OpenData.Tests
 
             List<BusStop> expected = new List<BusStop>();
             expected.Add(new BusStop("SEM:1696", "Grenoble, Chavant", 5.73233, 45.18502, "SEM_GENCHAVANT",
-                new string[] { "SEM:C4", "SEM:13" }));
-            expected.Add(new BusStop("test", "test", 5.73233, 45.18502, "test", new string[] { "test1", "test2" }));
+                new List<string> { "SEM:C4", "SEM:13" }));
+            expected.Add(new BusStop("test", "test", 5.73233, 45.18502, "test",
+                new List<string> { "test1", "test2" }));
 
             Assert.IsNotNull(result);
             Assert.AreEqual(expected.Count, result.Count);

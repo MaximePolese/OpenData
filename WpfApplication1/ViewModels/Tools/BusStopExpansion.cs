@@ -7,7 +7,7 @@ namespace WpfApplication1.ViewModels.Tools
     {
         public static List<string> GetConnectionLines(this BusStop busStop)
         {
-            return new List<string>(busStop.lines);
+            return new List<string>(busStop.ConnectionLines);
         }
 
         public static string GetConnectionLinesString(this BusStop busStop)

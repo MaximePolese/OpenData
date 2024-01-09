@@ -42,11 +42,10 @@
         <Reference Include="System.Xml"/>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="BusStop2.cs" />
+        <Compile Include="BusStop.cs" />
         <Compile Include="IDataAccess.cs" />
         <Compile Include="MetroData.cs" />
         <Compile Include="IRequest.cs" />
-        <Compile Include="BusStop.cs" />
         <Compile Include="Line.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="Request.cs" />
