@@ -20,25 +20,32 @@ namespace WpfApplication1.ViewModels
         private double _lon;
         private double _lat;
         private double _dist;
+        private string _code;
         private Location _center;
         private double _zoom;
         private readonly IDataAccess _request1;
+        private ICommand _displayLine;
+        private readonly IDataAccess _request2;
 
         public ObservableCollection<BusStop> BusStopList { get; set; }
         public ObservableCollection<Location> BusStopArroundMe { get; set; }
         public ObservableCollection<Location> MyPosition { get; set; }
+        public ObservableCollection<MapPolyline> Line { get; set; }
 
         public MainViewModel()
         {
             _lon = 5.731181509376984;
             _lat = 45.18486504179179;
             _dist = 300;
-            _zoom = 13;
+            _code = "SEM:13";
             _center = new Location(Lat, Lon);
+            _zoom = 13;
             _request1 = new MetroData();
+            _request2 = new MetroData();
             BusStopList = new ObservableCollection<BusStop>();
             BusStopArroundMe = new ObservableCollection<Location>();
             MyPosition = new ObservableCollection<Location>();
+            Line = new ObservableCollection<MapPolyline>();
         }
 
         public ICommand Search
@@ -51,6 +58,28 @@ namespace WpfApplication1.ViewModels
                     _search = value;
                 }
             }
+        }
+
+        private bool CanDoNewRequest(object arg)
+        {
+            return true;
+        }
+
+        public ICommand DisplayLine
+        {
+            get => _displayLine ?? (_displayLine = new RelayCommand(DisplayLineExe, CanDisplayLineExe));
+            set
+            {
+                if (value != null)
+                {
+                    _displayLine = value;
+                }
+            }
+        }
+
+        private bool CanDisplayLineExe(object arg)
+        {
+            return true;
         }
 
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -101,6 +130,16 @@ namespace WpfApplication1.ViewModels
             }
         }
 
+        public string Code
+        {
+            get => _code;
+            set
+            {
+                _code = value;
+                OnPropertyChanged("Code");
+            }
+        }
+
         public Location Center
         {
             get { return _center; }
@@ -121,11 +160,6 @@ namespace WpfApplication1.ViewModels
             }
         }
 
-        private bool CanDoNewRequest(object arg)
-        {
-            return true;
-        }
-
         private void NewRequest(object obj)
         {
             MyPosition.Clear();
@@ -135,13 +169,36 @@ namespace WpfApplication1.ViewModels
             MyPosition.Add(new Location(Lat, Lon));
             Center = new Location(Lat, Lon);
             Zoom = Scale(Dist);
-            
+
             List<BusStop> busStopArroundMe = _request1.GetBusStopArroundMe(Lon, Lat, Dist);
             foreach (var busStop in busStopArroundMe)
             {
                 BusStopList.Add(busStop);
                 BusStopArroundMe.Add(new Location(busStop.lat, busStop.lon));
             }
+
+            Line lineinfo = _request2.GetLineInfo(Code);
+            List<Location> coords = new List<Location>();
+            foreach (var feature in lineinfo.features)
+            {
+                foreach (var coordinateSet in feature.geometry.coordinates)
+                {
+                    foreach (var coordinate in coordinateSet)
+                    {
+                        coords.Add(new Location(coordinate[1], coordinate[0]));
+                    }
+                }
+            }
+            foreach (var coord in coords)
+            {
+                Console.WriteLine(coord);
+            }
+            
+        }
+
+        private void DisplayLineExe(object obj)
+        {
+            throw new NotImplementedException();
         }
 
         private double Scale(double dist)
@@ -163,6 +220,7 @@ namespace WpfApplication1.ViewModels
             {
                 val = 14.3;
             }
+
             return val;
         }
     }

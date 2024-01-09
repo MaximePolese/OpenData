@@ -64,7 +64,8 @@
         </ListView>
 
         <m:Map x:Name="myMap" CredentialsProvider="Au5kaMYJOxpMPXbkFydIfrmaJA9GtoVggg1D1X7AaL6xwkAolNPG17YSYmHcQhnV"
-               Grid.Column="3" Grid.Row="2" Margin="0 " Height="Auto" Width="500" Center="{Binding Center, Mode=TwoWay}"
+               Grid.Column="3" Grid.Row="2" Margin="0 " Height="Auto" Width="500"
+               Center="{Binding Center, Mode=TwoWay}"
                ZoomLevel="{Binding Zoom, Mode=TwoWay}">
             <!-- MouseDoubleClick="MapWithPushpins_MouseDoubleClick"> -->
 
@@ -84,9 +85,15 @@
                 </m:MapItemsControl.ItemTemplate>
             </m:MapItemsControl>
 
-            <m:MapPolyline Stroke="Blue" StrokeThickness="5"
-                           Locations="45.19892,5.71108 45.19894,5.71114 45.19896,5.71123 45.19953,5.71366 45.19956,5.71413 45.19967,5.7141 45.19989,5.71404 45.20037,5.71392 45.20091,5.71367 45.2008,5.71319"
-                           Opacity="0.7" />
+            <m:MapItemsControl ItemsSource="{Binding Line}">
+                <m:MapItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <m:MapPolyline Stroke="Blue" StrokeThickness="5" Locations="{Binding}" Opacity="0.7" />
+                    </DataTemplate>
+                </m:MapItemsControl.ItemTemplate>
+            </m:MapItemsControl>
+           
         </m:Map>
     </Grid>
 </Window>
+<!-- Locations="45.19892,5.71108 45.19894,5.71114 45.19896,5.71123 45.19953,5.71366 45.19956,5.71413 45.19967,5.7141 45.19989,5.71404 45.20037,5.71392 45.20091,5.71367 45.2008,5.71319" -->
