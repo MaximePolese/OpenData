@@ -22,7 +22,7 @@ namespace WpfApplication1.ViewModels
         private double _dist;
         private Location _center;
         private double _zoom;
-        private IDataAccess _request1;
+        private readonly IDataAccess _request1;
 
         public ObservableCollection<BusStop> BusStopList { get; set; }
         public ObservableCollection<Location> BusStopArroundMe { get; set; }
@@ -132,17 +132,38 @@ namespace WpfApplication1.ViewModels
             BusStopList.Clear();
             BusStopArroundMe.Clear();
 
-            MyPosition.Add(new Location(_lat, _lon));
-            Center.Latitude = Lat;
-            Center.Longitude = Lon;
-            Zoom = 17;
+            MyPosition.Add(new Location(Lat, Lon));
+            Center = new Location(Lat, Lon);
+            Zoom = Scale(Dist);
             
-            List<BusStop> busStopArroundMe = _request1.GetBusStopArroundMe(_lon, _lat, _dist);
+            List<BusStop> busStopArroundMe = _request1.GetBusStopArroundMe(Lon, Lat, Dist);
             foreach (var busStop in busStopArroundMe)
             {
                 BusStopList.Add(busStop);
                 BusStopArroundMe.Add(new Location(busStop.lat, busStop.lon));
             }
+        }
+
+        private double Scale(double dist)
+        {
+            double val = 13;
+            if (dist <= 500)
+            {
+                val = 17.5;
+            }
+            else if (dist > 500 && dist <= 1000)
+            {
+                val = 15.4;
+            }
+            else if (dist > 1000 && dist <= 1500)
+            {
+                val = 14.7;
+            }
+            else if (dist > 1500 && dist <= 2000)
+            {
+                val = 14.3;
+            }
+            return val;
         }
     }
 }

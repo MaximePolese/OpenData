@@ -62,8 +62,7 @@
                Grid.RowSpan="3" Grid.Row="0" Margin="0 25 25 25" Height="Auto" Center="{Binding Center, Mode=TwoWay}"
                ZoomLevel="{Binding Zoom, Mode=TwoWay}">
             <!-- MouseDoubleClick="MapWithPushpins_MouseDoubleClick"> -->
-            <!-- Center="45.18486504179179, 5.731181509376984" -->
-
+        
             <m:MapItemsControl ItemsSource="{Binding MyPosition}">
                 <m:MapItemsControl.ItemTemplate>
                     <DataTemplate>
