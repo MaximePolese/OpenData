@@ -95,7 +95,7 @@
             </m:MapItemsControl>
 
             <m:MapItemsControl>
-                <m:MapPolyline StrokeThickness="5" Stroke="#33A457" Locations="{Binding Line}" />
+                <m:MapPolyline StrokeThickness="5" Stroke="OrangeRed" Locations="{Binding Line}" />
             </m:MapItemsControl>
             
         </m:Map>
