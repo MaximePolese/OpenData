@@ -19,6 +19,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <Label Grid.Column="0" Grid.Row="0" Content="Longitude" Margin="25 5 5 0 " VerticalAlignment="Top"
@@ -88,12 +89,26 @@
             <m:MapItemsControl ItemsSource="{Binding Line}">
                 <m:MapItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <m:MapPolyline Stroke="Blue" StrokeThickness="5" Locations="{Binding}" Opacity="0.7" />
+                        <m:MapPolyline Stroke="#33A457" StrokeThickness="5" Locations="{Binding}" Opacity="0.7" />
                     </DataTemplate>
                 </m:MapItemsControl.ItemTemplate>
             </m:MapItemsControl>
-           
+
+            <m:MapItemsControl>
+                <m:MapPolyline StrokeThickness="5" Stroke="#33A457" Locations="{Binding Line}" />
+            </m:MapItemsControl>
+            
         </m:Map>
+
+        <Label Grid.Column="0" Grid.Row="3" Content="Info Ligne" Margin="25" VerticalAlignment="Center"
+               HorizontalAlignment="Right" />
+        <TextBox Grid.Column="1" Grid.Row="3" Height="25" Width="150" BorderBrush="Gray" BorderThickness="1"
+                 Text="{Binding Code}" Margin="25 " VerticalAlignment="Center" HorizontalAlignment="Left" />
+
+        <Button Grid.Column="2" Grid.Row="3" Height="25" Command="{Binding DisplayLine}" Content="INFO" Width="100"
+                VerticalContentAlignment="Center" Margin="25" VerticalAlignment="Center"
+                HorizontalAlignment="Right" Background="BlueViolet" />
+
     </Grid>
 </Window>
 <!-- Locations="45.19892,5.71108 45.19894,5.71114 45.19896,5.71123 45.19953,5.71366 45.19956,5.71413 45.19967,5.7141 45.19989,5.71404 45.20037,5.71392 45.20091,5.71367 45.2008,5.71319" -->

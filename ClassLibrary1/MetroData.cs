@@ -58,5 +58,21 @@ namespace ClassLibrary1
         {
             return DeserializeLineData(GetData(LineInfoUrl(lineCode)));
         }
+
+        // public List<double> GetCoords(string lineCode)
+        // {
+        //     foreach (var feature in lineinfo.features)
+        //     {
+        //         foreach (var coordinateSet in feature.geometry.coordinates)
+        //         {
+        //             foreach (var coordinate in coordinateSet)
+        //             {
+        //                 Line.Add(new Location(coordinate[1], coordinate[0]));
+        //             }
+        //         }
+        //     }
+        //
+        //     return null;
+        // }
     }
 }

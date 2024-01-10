@@ -26,8 +26,6 @@ namespace OpenData
 
             MetroData request2 = new MetroData();
             Line lineinfo = request2.GetLineInfo("SEM:13");
-
-
             Console.WriteLine($"Description: {lineinfo.description}");
             Console.WriteLine($"Type: {lineinfo.type}");
             // Affichage des features

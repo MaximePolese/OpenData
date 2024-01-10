@@ -30,7 +30,7 @@ namespace WpfApplication1.ViewModels
         public ObservableCollection<BusStop> BusStopList { get; set; }
         public ObservableCollection<Location> BusStopArroundMe { get; set; }
         public ObservableCollection<Location> MyPosition { get; set; }
-        public ObservableCollection<MapPolyline> Line { get; set; }
+        public LocationCollection Line { get; set; }
 
         public MainViewModel()
         {
@@ -45,7 +45,7 @@ namespace WpfApplication1.ViewModels
             BusStopList = new ObservableCollection<BusStop>();
             BusStopArroundMe = new ObservableCollection<Location>();
             MyPosition = new ObservableCollection<Location>();
-            Line = new ObservableCollection<MapPolyline>();
+            Line = new LocationCollection();
         }
 
         public ICommand Search
@@ -176,29 +176,21 @@ namespace WpfApplication1.ViewModels
                 BusStopList.Add(busStop);
                 BusStopArroundMe.Add(new Location(busStop.lat, busStop.lon));
             }
+        }
 
+        private void DisplayLineExe(object obj)
+        {
             Line lineinfo = _request2.GetLineInfo(Code);
-            List<Location> coords = new List<Location>();
             foreach (var feature in lineinfo.features)
             {
                 foreach (var coordinateSet in feature.geometry.coordinates)
                 {
                     foreach (var coordinate in coordinateSet)
                     {
-                        coords.Add(new Location(coordinate[1], coordinate[0]));
+                        Line.Add(new Location(coordinate[1], coordinate[0]));
                     }
                 }
             }
-            foreach (var coord in coords)
-            {
-                Console.WriteLine(coord);
-            }
-            
-        }
-
-        private void DisplayLineExe(object obj)
-        {
-            throw new NotImplementedException();
         }
 
         private double Scale(double dist)
