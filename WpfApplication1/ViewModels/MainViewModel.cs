@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
@@ -180,6 +181,7 @@ namespace WpfApplication1.ViewModels
 
         private void DisplayLineExe(object obj)
         {
+            Line.Clear();
             Line lineinfo = _request2.GetLineInfo(Code);
             foreach (var feature in lineinfo.features)
             {
@@ -191,6 +193,20 @@ namespace WpfApplication1.ViewModels
                     }
                 }
             }
+
+            Zoom = 12;
+            Center = LineCenter(Line);
+        }
+
+        private Location LineCenter(LocationCollection Line)
+        {
+            double startLat = Line.First().Latitude;
+            double startLon = Line.First().Longitude;
+            double endLat = Line.Last().Latitude;
+            double endLon = Line.Last().Longitude;
+            double lati = (startLat + endLat) / 2;
+            double longi = (endLon + startLon) / 2;
+            return new Location(lati, longi);
         }
 
         private double Scale(double dist)

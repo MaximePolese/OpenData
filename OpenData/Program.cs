@@ -45,7 +45,7 @@ namespace OpenData
                 //----------------------------------------------------
                 Console.WriteLine($"Feature description: {feature.description}");
                 
-                Console.WriteLine($"Feature description: {feature.geometry.type}");
+                Console.WriteLine($"Feature type: {feature.geometry.type}");
                 Console.WriteLine($"Coordinates:");
                 foreach (var coordinateSet in feature.geometry.coordinates)
                 {
